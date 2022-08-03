@@ -27,9 +27,9 @@ function OverviewBody(){
                 <div className="gkc__overViewBody__notes ml-10 grow">
                     <div className="gkc__overViewBody__notes__form mt-10">
                        <div className="flex flex-col h-screen">
-                           <form action="" className="bg-white w-3/6 mx-auto">
-                               <RichTextEditor/>
-                           </form>
+                           {/*Rich Text Editor*/}
+                           <RichTextEditor/>
+                           {/*Rich Text Editor*/}
                            <div className="gkc__overViewBody__notes__wrapper mx-auto grow">
                                <div className="gkc__overViewBody__notes__wrapper__placeholder flex flex-col justify-center items-center mt-20">
                                    <FontAwesomeIcon icon={faCampground} size="4x" className={'gkc__navbar__icon mb-2'} />
