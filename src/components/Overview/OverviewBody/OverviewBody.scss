@@ -1,0 +1,17 @@
+.gkc{
+  &__overViewBody__sidebar{
+    font-weight: 500;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    font-size: 1.2rem;
+    li{
+      padding: 1.5rem 1.5rem 1.2rem 2rem;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+
+      &:hover{
+        background-color: #e2dcdc;
+      }
+    }
+  }
+}

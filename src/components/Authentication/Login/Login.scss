@@ -1,0 +1,56 @@
+$gkc__loginBlue : rgb(85, 123, 231);
+$gkc__loginDarkBlue : rgb(53,91,192);
+
+.gkc{
+   &__loginInput{
+      outline: none;
+      &:focus{
+         border-color: $gkc__loginBlue;
+         ~ .gkc__loginInputLabel{
+            top: -11px;
+         }
+        ~ .gkc__loginInputIcon{
+           color: $gkc__loginBlue;
+        }
+      }
+
+      &:not(:placeholder-shown){
+         ~ .gkc__loginInputLabel{
+            top: -11px;
+         }
+      }
+   }
+   &__loginInputLabel{
+     background-color: #fff;
+     padding: 0 5px;
+     transition: 0.2s ease all;
+      top: 17px;
+      left: 10%;
+   }
+  &__loginInputIcon{
+    top: 17px;
+    right: 10%;
+  }
+
+  &__loginLogInButton{
+    background-color: $gkc__loginDarkBlue;
+    transition: all ease 0.5s;
+
+    &:hover{
+      background-color: $gkc__loginBlue;
+    }
+  }
+
+  &__loginRegisterButton{
+    color: $gkc__loginDarkBlue;
+    transition: all ease 0.5s;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 700;
+    outline: none;
+
+    &:hover{
+      color: $gkc__loginBlue;
+    }
+  }
+}

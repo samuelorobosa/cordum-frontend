@@ -1,0 +1,10 @@
+$gkc__loginBlue : rgb(85, 123, 231);
+
+.gkc{
+    &__navbar__icon{
+       color: $gkc__loginBlue;
+    }
+   &__navbar__container{
+     grid-template-columns: 5% 20% 1fr;
+   }
+}
