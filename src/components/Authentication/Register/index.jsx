@@ -33,7 +33,10 @@ function Register(){
     },{
         onError: (response)=>toast.error(response?.data?.message,toastOptions),
         onSuccess: ({data})=>{
-            toast.success(data?.message, {...toastOptions,  onClose: () => navigate('/', {replace:true})});
+            toast.success(data?.message, {
+                ...toastOptions,
+                onClose: () => navigate('/', {replace:true})
+            });
             delete data.message;
             //set Local Storage
             window.localStorage.setItem(`gkc__auth`, JSON.stringify(data));

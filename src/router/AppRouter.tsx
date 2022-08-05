@@ -19,9 +19,7 @@ function AppRouter(){
                     payload: JSON.parse(token),
                 })
             }
-
         };
-
         checkAuth();
     }, [dispatch]);
     return(
