@@ -1,7 +1,7 @@
 import {useForm} from "react-hook-form";
 import './Register.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faAt, faEye, faEyeSlash, faHurricane, faUserCheck} from '@fortawesome/free-solid-svg-icons'
+import {faAt, faEye, faEyeSlash, faSpinner, faUserCheck} from '@fortawesome/free-solid-svg-icons'
 import logo from '../../../logo.svg';
 import {useState} from "react";
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -15,12 +15,11 @@ import {useNavigate} from "react-router-dom";
 function Register(){
     const toastOptions = {
         hideProgressBar: true,
-        autoClose: 1200,
+        autoClose: 1500,
         pauseOnHover: false,
     };
 
     const navigate = useNavigate();
-
     const registrationEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/auth/register`;
     const {isLoading, mutateAsync} = useMutation((data) => {
         return axios.post(registrationEndpoint, data, {
@@ -33,13 +32,10 @@ function Register(){
     },{
         onError: (response)=>toast.error(response?.data?.message,toastOptions),
         onSuccess: ({data})=>{
-            toast.success(data?.message, {
-                ...toastOptions,
-                onClose: () => navigate('/', {replace:true})
-            });
             delete data.message;
             //set Local Storage
             window.localStorage.setItem(`gkc__auth`, JSON.stringify(data));
+            navigate('/', {replace:true});
         },
     });
 
@@ -111,8 +107,8 @@ function Register(){
                     </div>
 
                     <div className="relative my-10">
-                        <button className={'gkc__registerSignUpButton font-bold text-medium py-2 text-white w-2/3 rounded-xl'}>
-                            Sign Up  <FontAwesomeIcon icon={faHurricane} size={'1x'} className={`spinner ${!isLoading ? 'hidden': ''}`} />
+                        <button disabled={isLoading} className={'gkc__registerSignUpButton font-bold text-medium py-2 text-white w-2/3 rounded-xl'}>
+                            Sign Up  <FontAwesomeIcon icon={faSpinner} size={'1x'} className={`spinner ${!isLoading ? 'hidden': ''}`} />
                         </button>
 
                     </div>

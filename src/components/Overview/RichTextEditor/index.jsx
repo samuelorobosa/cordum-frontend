@@ -43,26 +43,41 @@ import 'tinymce/plugins/template';
 import 'tinymce/plugins/visualblocks';
 import 'tinymce/plugins/visualchars';
 import 'tinymce/plugins/wordcount';
-
-// importing plugin resources
 import 'tinymce/plugins/emoticons/js/emojis';
-import {useRef} from "react";
+import {useContext, useRef} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import  {faFloppyDisk} from "@fortawesome/free-solid-svg-icons/faFloppyDisk";
+import  {faFloppyDisk, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import {useMutation} from "@tanstack/react-query";
+import axios from "axios";
+import AuthenticationContext from "../../../context/Authentication/AuthenticationContext";
+
 
 export default function RichTextEditor(props) {
+    let {user} = useContext(AuthenticationContext);
     const {init, ...rest} = props;
-    // note that skin and content_css is disabled to avoid the normal
-    // loading process and is instead loaded as a string via content_style
     const editorRef = useRef(null);
-    const log = (e) => {
-        e.preventDefault();
-        if (editorRef.current) {
-            console.log(editorRef.current.getContent());
+    const saveNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note`;
+    const {isLoading, mutate} = useMutation((data)=>{
+        return axios.post(saveNotesEndpoint, data, {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Authorization': user?.access_token
+        })
+    });
+
+    const handleSubmit = () => {
+        if (editorRef.current && editorRef.current.getContent().length > 0) {
+            let body = editorRef.current.getContent();
+            console.log(body)
+            mutate(body);
+        } else {
+            console.log("Can't save an empty note");
         }
     };
+
     return (
-        <form action="" onSubmit={log} className="bg-white w-3/6 mx-auto">
+        <div className="bg-white w-3/6 mx-auto">
             <Editor
                 {...rest}
                 onInit={(evt, editor) => editorRef.current = editor}
@@ -82,9 +97,11 @@ export default function RichTextEditor(props) {
                 }}
             />
 
-            <button type="submit" className="block text-white font-bold py-1 relative mx-auto -mt-3 z-30 bg-primary w-1/3 rounded-2xl cursor-pointer">
-                Save&nbsp;<FontAwesomeIcon icon={faFloppyDisk} size={'1x'} className="text-white" />
+            <button onClick={()=>handleSubmit} className="block text-white font-bold py-1 relative mx-auto -mt-3 z-30 bg-primary w-1/3 rounded-2xl cursor-pointer">
+                Save&nbsp;{isLoading ?
+                <FontAwesomeIcon icon={faSpinner} size={'1x'} className={`text-white spinner`} /> :
+                <FontAwesomeIcon icon={faFloppyDisk} size={'1x'} className={`text-white`} />}
             </button>
-        </form>
+        </div>
     );
 }

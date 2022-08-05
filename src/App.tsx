@@ -14,7 +14,7 @@ function App() :JSX.Element|null {
   return (
       <>
           <AuthenticationProvider>
-              <ToastContainer limit={1} position={'top-center'}/>
+              <ToastContainer position={'top-center'}/>
                   <QueryClientProvider client={queryClient}>
                       <BrowserRouter>
                           <AppRouter/>

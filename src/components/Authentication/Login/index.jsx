@@ -1,27 +1,54 @@
 import {useForm} from "react-hook-form";
 import './Login.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAt, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import {faAt, faEye, faEyeSlash, faHurricane} from '@fortawesome/free-solid-svg-icons'
 import logo from '../../../logo.svg';
 import {useState} from "react";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useMutation} from "@tanstack/react-query";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 function Login(){
+    const toastOptions = {
+        hideProgressBar: true,
+        autoClose: 1500,
+        pauseOnHover: false,
+    };
+
+    const navigate = useNavigate();
+    const registrationEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/auth/login`;
+    const {isLoading, mutateAsync} = useMutation((data) => {
+        return axios.post(registrationEndpoint, data, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+        });
+    },{
+        onError: (response)=>toast.error(response?.data?.message,toastOptions),
+        onSuccess: ({data})=>{
+            delete data.message;
+            //set Local Storage
+            window.localStorage.setItem(`gkc__auth`, JSON.stringify(data));
+            navigate('/', {replace:true});
+        },
+    });
     let strongRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
     const schema =  Yup.object({
         password: Yup.string().required('Password field is required').matches(strongRegex, "Must contain at least 6 Characters, 1 Number and 1 letter"),
         email: Yup.string().email('Oops! This email format is not quite correct').required('Email field is required'),
     });
-    const {register, handleSubmit, watch, formState:{errors}} = useForm({resolver: yupResolver(schema)});
-    const onSubmit = data => console.log(data);
+    const {register, handleSubmit, formState:{errors}} = useForm({resolver: yupResolver(schema)});
     const [showPassword, setShowPassword] = useState(false);
 
     return (
         <>
             <div className="min-h-screen flex flex-col items-center justify-center bg-gray-200">
-                <form onSubmit={handleSubmit(onSubmit)} action="" className=" text-center h-2/3 bg-white w-5/6 sm:w-4/6 lg:w-2/6 rounded shadow-2xl" autoComplete={'off'}>
+                <form onSubmit={handleSubmit(mutateAsync)} action="" className=" text-center h-2/3 bg-white w-5/6 sm:w-4/6 lg:w-2/6 rounded shadow-2xl" autoComplete={'off'}>
                     <div className="gkc__login__logo my-4">
                         <img src={logo} alt="" className="h-16 mx-auto"/>
                     </div>
@@ -60,7 +87,9 @@ function Login(){
                     </div>
 
                     <div className="relative my-10">
-                        <button className={'gkc__loginLogInButton font-bold text-medium py-2 text-white w-2/3 rounded-xl'}>Log In</button>
+                        <button disabled={isLoading} className={'gkc__loginLogInButton font-bold text-medium py-2 text-white w-2/3 rounded-xl'}>
+                            Log In <FontAwesomeIcon icon={faHurricane} size={'1x'} className={`spinner ${!isLoading ? 'hidden': ''}`} />
+                        </button>
                     </div>
 
                     <div className="relative my-16 px-4">
