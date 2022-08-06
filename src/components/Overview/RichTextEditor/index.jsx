@@ -61,15 +61,14 @@ export default function RichTextEditor(props) {
         return axios.post(saveNotesEndpoint, data, {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Authorization': user?.access_token
+            'Access-Control-Allow-Origin': 'http://localhost:3000/',
+            'Authorization': `Bearer ${user?.access_token}`
         })
     });
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         if (editorRef.current && editorRef.current.getContent().length > 0) {
             let body = editorRef.current.getContent();
-            console.log(body)
             mutate(body);
         } else {
             console.log("Can't save an empty note");
@@ -97,7 +96,7 @@ export default function RichTextEditor(props) {
                 }}
             />
 
-            <button onClick={()=>handleSubmit} className="block text-white font-bold py-1 relative mx-auto -mt-3 z-30 bg-primary w-1/3 rounded-2xl cursor-pointer">
+            <button onClick={handleSubmit} className="block text-white font-bold py-1 relative mx-auto -mt-3 z-30 bg-primary w-1/3 rounded-2xl cursor-pointer">
                 Save&nbsp;{isLoading ?
                 <FontAwesomeIcon icon={faSpinner} size={'1x'} className={`text-white spinner`} /> :
                 <FontAwesomeIcon icon={faFloppyDisk} size={'1x'} className={`text-white`} />}

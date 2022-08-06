@@ -3,7 +3,7 @@ import './Register.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faAt, faEye, faEyeSlash, faSpinner, faUserCheck} from '@fortawesome/free-solid-svg-icons'
 import logo from '../../../logo.svg';
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from "yup";
 import {Link} from "react-router-dom";
@@ -11,8 +11,10 @@ import axios from "axios";
 import {useMutation} from "@tanstack/react-query";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
+import AuthenticationContext from "../../../context/Authentication/AuthenticationContext";
 
 function Register(){
+    const {dispatch} = useContext(AuthenticationContext)
     const toastOptions = {
         hideProgressBar: true,
         autoClose: 1500,
@@ -30,11 +32,20 @@ function Register(){
             },
         });
     },{
-        onError: (response)=>toast.error(response?.data?.message,toastOptions),
+        onError: ({response})=>{
+            toast.error(response?.data?.message,toastOptions)
+        },
         onSuccess: ({data})=>{
             delete data.message;
             //set Local Storage
             window.localStorage.setItem(`gkc__auth`, JSON.stringify(data));
+
+            //dispatch an action to set Authentication State
+            dispatch({
+                type: 'ASSIGN_USER',
+                payload: data
+            })
+
             navigate('/', {replace:true});
         },
     });

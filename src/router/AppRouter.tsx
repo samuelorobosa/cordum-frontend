@@ -13,7 +13,7 @@ function AppRouter(){
     useEffect(() => {
         const checkAuth = () => {
             const token = localStorage.getItem('gkc__auth');
-            if(token) {
+            if(token !== null) {
                 dispatch({
                     type: 'ASSIGN_USER',
                     payload: JSON.parse(token),

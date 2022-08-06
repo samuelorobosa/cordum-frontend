@@ -3,15 +3,17 @@ import './Login.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAt, faEye, faEyeSlash, faHurricane} from '@fortawesome/free-solid-svg-icons'
 import logo from '../../../logo.svg';
-import {useState} from "react";
+import {useContext, useState} from "react";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
 import {Link, useNavigate} from "react-router-dom";
 import {useMutation} from "@tanstack/react-query";
 import axios from "axios";
 import {toast} from "react-toastify";
+import AuthenticationContext from "../../../context/Authentication/AuthenticationContext";
 
 function Login(){
+    const {dispatch} = useContext(AuthenticationContext);
     const toastOptions = {
         hideProgressBar: true,
         autoClose: 1500,
@@ -21,7 +23,7 @@ function Login(){
     const navigate = useNavigate();
     const registrationEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/auth/login`;
     const {isLoading, mutateAsync} = useMutation((data) => {
-        return axios.post(registrationEndpoint, data, {
+         return axios.post(registrationEndpoint, data, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -29,12 +31,19 @@ function Login(){
             },
         });
     },{
-        onError: (response)=>toast.error(response?.data?.message,toastOptions),
+        onError: ({response})=>toast.error(response?.data?.message,toastOptions),
         onSuccess: ({data})=>{
             delete data.message;
-            //set Local Storage
+            // set Local Storage
             window.localStorage.setItem(`gkc__auth`, JSON.stringify(data));
-            navigate('/', {replace:true});
+
+            //dispatch an action to set Authentication State
+            dispatch({
+                type: 'ASSIGN_USER',
+                payload: data
+            })
+
+            window.setTimeout(navigate('/', {replace:true}), 3000);
         },
     });
     let strongRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");

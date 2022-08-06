@@ -13,15 +13,15 @@ const queryClient = new QueryClient();
 function App() :JSX.Element|null {
   return (
       <>
-          <AuthenticationProvider>
-              <ToastContainer position={'top-center'}/>
-                  <QueryClientProvider client={queryClient}>
-                      <BrowserRouter>
-                          <AppRouter/>
-                     </BrowserRouter>
-                      <ReactQueryDevtools initialIsOpen={false} />
-                  </QueryClientProvider>
-          </AuthenticationProvider>
+          <ToastContainer position={'top-center'}/>
+              <AuthenticationProvider>
+                      <QueryClientProvider client={queryClient}>
+                          <BrowserRouter>
+                              <AppRouter/>
+                         </BrowserRouter>
+                          <ReactQueryDevtools initialIsOpen={false} />
+                      </QueryClientProvider>
+              </AuthenticationProvider>
       </>
   );
 }
