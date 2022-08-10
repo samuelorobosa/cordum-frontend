@@ -1,13 +1,16 @@
 .gkc{
-  &__overViewBody__sidebar{
+  &__overViewBodySidebar{
     font-weight: 500;
     height: calc(100vh - 60px);
     overflow-y: auto;
     font-size: 1.2rem;
+    color: #6b7280;
+
     li{
       padding: 1.5rem 1.5rem 1.2rem 2rem;
       border-top-right-radius: 30px;
       border-bottom-right-radius: 30px;
+      list-style: none;
 
       &:hover{
         background-color: #e2dcdc;
@@ -18,4 +21,44 @@
   &__skeletonContainer{
    display: contents;
   }
+
+  &__overViewBodyNotes{
+    margin-left: 2.5rem;
+    flex-grow: 1;
+    &Form{
+      margin-top: 2.5rem;
+    }
+  }
+
+  &__richTextEditorWrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  &__overViewBodyNotesContent{
+    flex-grow: 1;
+    &Placeholder{
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-top: 5rem;
+
+      &__inner{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        position: relative;
+        flex-grow: 1;
+        gap: 0.5rem;
+        vertical-align: top;
+      }
+    }
+  }
+
+  &__note{
+    cursor: pointer;
+    padding: 1.25rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px #9ca3af;
+    border-radius: 0.25rem;
+  }
+
 }

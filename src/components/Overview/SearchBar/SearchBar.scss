@@ -1,7 +1,14 @@
 $gkc__loginBlue : rgb(85, 123, 231);
 .gkc{
-  &__searchbar__input{
+  &__searchbarInput{
     outline: none;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    width: 83.333333%;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+
     &:focus{
       border:2px solid $gkc__loginBlue;
     }

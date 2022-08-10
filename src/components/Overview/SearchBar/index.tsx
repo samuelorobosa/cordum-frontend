@@ -4,7 +4,7 @@ function SearchBar():JSX.Element{
         <>
             <input
                 type="text"
-                className="py-2 px-2 text-xl w-5/6 rounded shadow gkc__searchbar__input"
+                className="gkc__searchbarInput"
                 placeholder={'Search'}
             />
         </>

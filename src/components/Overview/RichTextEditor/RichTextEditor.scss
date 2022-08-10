@@ -1,0 +1,27 @@
+.gkc{
+  &__richTextEditor{
+    background-color: white;
+    margin: 0 auto;
+    width: 50%;
+  }
+
+  &__richTextEditorSaveButtonContainer{
+    margin: 0 auto;
+    width: 33.333333%;
+
+    button{
+        width: 100%;
+        display: block;
+        color: white;
+        font-weight: 700;
+        position: relative;
+        z-index: 30;
+        cursor: pointer;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        margin: -0.75rem auto 0;
+        background-color: #2563eb;
+        border-radius: 1rem;
+    }
+  }
+}

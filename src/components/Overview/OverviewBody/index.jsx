@@ -26,7 +26,7 @@ function OverviewBody(){
     return(
         <>
             <div className="flex">
-                <div className="gkc__overViewBody__sidebar text-gray-500">
+                <div className="gkc__overViewBodySidebar">
                     <ul>
                         <li><FontAwesomeIcon icon={faLightbulb}/> &nbsp; Notes</li>
                         <li><FontAwesomeIcon icon={faPencil}/> &nbsp; Edit Labels </li>
@@ -35,15 +35,15 @@ function OverviewBody(){
                         <li><FontAwesomeIcon icon={faTrashCan}/> &nbsp; Bin</li>
                     </ul>
                 </div>
-                <div className="gkc__overViewBody__notes ml-10 grow">
-                    <div className="gkc__overViewBody__notes__form mt-10">
-                       <div className="flex flex-col h-screen">
+                <div className="gkc__overViewBodyNotes">
+                    <div className="gkc__overViewBodyNotesForm">
+                       <div className="gkc__richTextEditorWrapper">
                            {/*Rich Text Editor*/}
                            <RichTextEditor/>
                            {/*Rich Text Editor*/}
-                           <div className="gkc__overViewBody__notes__wrapper grow">
-                               <div className="gkc__overViewBody__notes__wrapper__placeholder px-4 mt-20">
-                                   <div className="grid grid-cols-[repeat(3,_1fr)] gap-2 align-top grow relative">
+                           <div className="gkc__overViewBodyNotesContent">
+                               <div className="gkc__overViewBodyNotesContentPlaceholder">
+                                   <div className="gkc__overViewBodyNotesContentPlaceholder__inner">
                                            {
                                                isFetching ?
                                                <Skeleton inline={true} height={200} count={9} containerClassName="gkc__skeletonContainer" /> :
@@ -52,7 +52,7 @@ function OverviewBody(){
                                                        <>
                                                            <div
                                                                dangerouslySetInnerHTML={{__html: note.body}}
-                                                               className="cursor-pointer p-5  rounded-lg shadow shadow-gray-400 rounded-lg"
+                                                               className="gkc__note"
                                                                key={idx}
                                                            />
                                                        </>

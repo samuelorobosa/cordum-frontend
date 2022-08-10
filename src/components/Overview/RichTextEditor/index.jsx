@@ -1,4 +1,5 @@
 import { Editor } from '@tinymce/tinymce-react';
+import './RichTextEditor.scss';
 
 // TinyMCE so the global var exists
 // eslint-disable-next-line no-unused-vars
@@ -81,7 +82,7 @@ export default function RichTextEditor(props) {
     };
 
     return (
-        <div className="bg-white w-3/6 mx-auto">
+        <div className="gkc__richTextEditor">
             <Editor
                 {...rest}
                 onInit={(evt, editor) => editorRef.current = editor}
@@ -101,8 +102,8 @@ export default function RichTextEditor(props) {
                 }}
             />
 
-            <div className={'w-1/3 mx-auto'}>
-                <button onClick={handleSubmit} className="block w-full mx-auto text-white font-bold py-1 relative mx-auto -mt-3 z-30 bg-blue-600 rounded-2xl cursor-pointer">
+            <div className={'gkc__richTextEditorSaveButtonContainer'}>
+                <button onClick={handleSubmit}>
                     Save&nbsp;{isLoading ?
                     <FontAwesomeIcon icon={faSpinner} size={'1x'} className={`text-white spinner`} /> :
                     <FontAwesomeIcon icon={faFloppyDisk} size={'1x'} className={`text-white`} />}

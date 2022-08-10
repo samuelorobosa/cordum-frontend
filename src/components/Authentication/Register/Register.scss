@@ -5,12 +5,12 @@ $gkc__registerDarkBlue : rgb(53,91,192);
    &__registerInput{
      outline: none;
      &:focus{
-       border-color: $gkc__loginBlue;
+       border-color: $gkc__registerBlue;
        ~ .gkc__loginInputLabel{
          top: -11px;
        }
        ~ .gkc__loginInputIcon{
-         color: $gkc__loginBlue;
+         color: $gkc__registerBlue;
        }
      }
 
@@ -47,7 +47,7 @@ $gkc__registerDarkBlue : rgb(53,91,192);
      color: #6b7280
   }
    &__registerSignUpButton{
-     background-color: $gkc__loginDarkBlue;
+     background-color: $gkc__registerDarkBlue;
      transition: all ease 0.5s;
      font-weight: 700;
      padding-top: 0.5rem;
