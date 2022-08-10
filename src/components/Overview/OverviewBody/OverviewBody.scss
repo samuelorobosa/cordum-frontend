@@ -14,4 +14,8 @@
       }
     }
   }
+
+  &__skeletonContainer{
+   display: contents;
+  }
 }

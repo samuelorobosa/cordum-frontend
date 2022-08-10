@@ -10,10 +10,10 @@ function NavBar(): JSX.Element|null{
             <div>
                 <FontAwesomeIcon icon={faBarsStaggered} size="2x" className={'gkc__navbar__icon'} />
             </div>
-            <div className="flex">
+            <div className="flex items-center">
                 <FontAwesomeIcon icon={faCampground} size="2x" className={'gkc__navbar__icon'} />
                 &nbsp;
-                <span className="text-3xl text-gray-400 font-bold">React Keep</span>
+                <span className="text-2xl text-gray-400 font-bold">React Keep</span>
             </div>
             <div>
                 <SearchBar/>

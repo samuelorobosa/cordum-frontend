@@ -47,29 +47,34 @@ import 'tinymce/plugins/emoticons/js/emojis';
 import {useContext, useRef} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import  {faFloppyDisk, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
 import axios from "axios";
 import AuthenticationContext from "../../../context/Authentication/AuthenticationContext";
 
 
 export default function RichTextEditor(props) {
     let {user} = useContext(AuthenticationContext);
+    const queryClient = useQueryClient();
     const {init, ...rest} = props;
     const editorRef = useRef(null);
-    const saveNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note`;
-    const {isLoading, mutate} = useMutation((data)=>{
-        return axios.post(saveNotesEndpoint, data, {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'http://localhost:3000/',
-            'Authorization': `Bearer ${user?.access_token}`
+    const saveNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note/`;
+    const {isLoading, mutate} = useMutation((body)=>{
+        return axios.post(saveNotesEndpoint, {body}, {
+            headers : {
+                'Accept': 'application/json',
+                'Access-Control-Allow-Origin': 'http://localhost:3000/',
+                'Authorization': `Bearer ${user.access_token}`
+            }
         })
+    },{
+        onSuccess: () => queryClient.invalidateQueries(['fetch__notes'], {exact: true}),
     });
 
     const handleSubmit = (e) => {
         if (editorRef.current && editorRef.current.getContent().length > 0) {
             let body = editorRef.current.getContent();
             mutate(body);
+            editorRef.current.setContent('');
         } else {
             console.log("Can't save an empty note");
         }
@@ -80,7 +85,7 @@ export default function RichTextEditor(props) {
             <Editor
                 {...rest}
                 onInit={(evt, editor) => editorRef.current = editor}
-                initialValue='<p>Take a note.....</p>'
+                placeholder='<p>Take a note.....</p>'
                 init={{
                     height: 150,
                     menubar: false,
@@ -96,11 +101,13 @@ export default function RichTextEditor(props) {
                 }}
             />
 
-            <button onClick={handleSubmit} className="block text-white font-bold py-1 relative mx-auto -mt-3 z-30 bg-primary w-1/3 rounded-2xl cursor-pointer">
-                Save&nbsp;{isLoading ?
-                <FontAwesomeIcon icon={faSpinner} size={'1x'} className={`text-white spinner`} /> :
-                <FontAwesomeIcon icon={faFloppyDisk} size={'1x'} className={`text-white`} />}
-            </button>
+            <div className={'w-1/3 mx-auto'}>
+                <button onClick={handleSubmit} className="block w-full mx-auto text-white font-bold py-1 relative mx-auto -mt-3 z-30 bg-blue-600 rounded-2xl cursor-pointer">
+                    Save&nbsp;{isLoading ?
+                    <FontAwesomeIcon icon={faSpinner} size={'1x'} className={`text-white spinner`} /> :
+                    <FontAwesomeIcon icon={faFloppyDisk} size={'1x'} className={`text-white`} />}
+                </button>
+            </div>
         </div>
     );
 }

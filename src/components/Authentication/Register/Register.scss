@@ -3,45 +3,63 @@ $gkc__registerDarkBlue : rgb(53,91,192);
 
 .gkc{
    &__registerInput{
-      outline: none;
-      &:focus{
-         border-color: $gkc__registerBlue;
-         ~ .gkc__registerInputLabel{
-            top: -11px;
-         }
-        ~ .gkc__registerInputIcon{
-           color: $gkc__registerBlue;
-        }
-      }
+     outline: none;
+     &:focus{
+       border-color: $gkc__loginBlue;
+       ~ .gkc__loginInputLabel{
+         top: -11px;
+       }
+       ~ .gkc__loginInputIcon{
+         color: $gkc__loginBlue;
+       }
+     }
 
-      &:not(:placeholder-shown){
-         ~ .gkc__registerInputLabel{
-            top: -11px;
-         }
-      }
+     &:not(:placeholder-shown){
+       ~ .gkc__loginInputLabel{
+         top: -11px;
+       }
+     }
+
+     display: block;
+     margin: 1rem auto;
+     width: 83.333333%;
+     border: 2px solid #6b7280;
+     border-radius: 0.75rem;
+     height: 2.5rem;
+     padding: 1.5rem 0.5rem;
    }
    &__registerInputLabel{
      background-color: #fff;
      padding: 0 5px;
      transition: 0.2s ease all;
-      top: 17px;
-      left: 10%;
+     top: 17px;
+     left: 10%;
+     position: absolute;
+     pointer-events: none;
+     color: #9ca3af;
    }
-  &__registerInputIcon{
-    top: 17px;
-    right: 10%;
+   &__registerInputIcon{
+     top: 17px;
+     right: 10%;
+     position: absolute;
+     font-size: 1.25rem;
+     line-height: 1.75rem;
+     color: #6b7280
   }
-
-  &__registerSignUpButton{
-    background-color: $gkc__registerDarkBlue;
-    transition: all ease 0.5s;
-
+   &__registerSignUpButton{
+     background-color: $gkc__loginDarkBlue;
+     transition: all ease 0.5s;
+     font-weight: 700;
+     padding-top: 0.5rem;
+     padding-bottom: 0.5rem;
+     color: white;
+     border-radius: 0.75rem;
+     width: 66.666667%;
     &:hover{
       background-color: $gkc__registerBlue;
     }
   }
-
-  &__registerLogInButton{
+   &__registerLogInButton{
     color: $gkc__registerDarkBlue;
     transition: all ease 0.5s;
     text-decoration: underline;
@@ -51,6 +69,88 @@ $gkc__registerDarkBlue : rgb(53,91,192);
 
     &:hover{
       color: $gkc__registerBlue;
+    }
+  }
+   &__registerContainer{
+     min-height: 100vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     background-color: #e5e7eb;
+
+     form{
+       text-align: center;
+       height: 66.666667%;
+       background-color: white;
+       width: 83.333333%;
+       border-radius: 0.25rem;
+       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+     }
+   }
+   &__registerLogo{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    img{
+      margin: 0 auto;
+      height: 4rem;
+    }
+
+    & +  p{
+      text-align: center;
+      color: #4b5563;
+      font-weight: 700;
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }
+   &__registerEmailInputContainer,
+   &__registerNameInputContainer,
+   &__registerPasswordInputContainer,
+   &__registerSubmitButtonContainer{
+    position: relative;
+  }
+   &__registerSubmitButtonContainer{
+     margin-top: 2.5rem;
+     margin-bottom: 2.5rem;
+  }
+   &__registerInputError{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #ef4444;
+    margin-bottom: 2rem;
+  }
+   &__registerAddendum{
+    position: relative;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    p{
+      color: #6b7280;
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+
+  .gkc{
+    &__registerContainer{
+      form{
+        width: 66.666667%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+  .gkc{
+    &__registerContainer{
+      form{
+        width: 33.333333%;
+      }
     }
   }
 }

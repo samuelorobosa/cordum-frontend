@@ -61,71 +61,71 @@ function Register(){
 
     return (
         <>
-            <div className="min-h-screen flex flex-col items-center justify-center bg-gray-200">
-                <form onSubmit={handleSubmit(mutateAsync)} action="" className=" text-center h-2/3 bg-white w-5/6 sm:w-4/6 lg:w-2/6 rounded shadow-2xl" autoComplete={'off'}>
-                    <div className="gkc__register__logo my-4">
-                        <img src={logo} alt="" className="h-16 mx-auto"/>
+            <div className="gkc__registerContainer">
+                <form onSubmit={handleSubmit(mutateAsync)} autoComplete={'off'}>
+                    <div className="gkc__registerLogo">
+                        <img src={logo} alt=""/>
                     </div>
-                    <p className="text-center text-gray-600 font-bold text-2xl"> Register </p>
+                    <p> Register </p>
 
-                    <div className="relative">
+                    <div className="gkc__registerNameInputContainer">
                         <input
                             type="text"
                             {...register('name')}
-                            className="gkc__registerInput block w-5/6 mx-auto border-2 border-gray-500 rounded-xl h-10 px-2 py-6 text-medium my-4"
+                            className="gkc__registerInput"
                             placeholder=" "
                         />
-                        <label className="gkc__registerInputLabel absolute pointer-events-none text-gray-400" htmlFor="email">Name</label>
-                        <div className='gkc__registerInputIcon absolute text-xl text-gray-500'>
+                        <label className="gkc__registerInputLabel" htmlFor="email">Name</label>
+                        <div className='gkc__registerInputIcon'>
                             <FontAwesomeIcon icon={faUserCheck}/>
                         </div>
                     </div>
-                    <div className="gkc__registerInputError text-sm text-red-500 mb-8">
+                    <div className="gkc__registerInputError">
                         {errors?.name?.message}
                     </div>
 
 
-                    <div className="relative">
+                    <div className="gkc__registerEmailInputContainer">
                         <input
                             type="email"
                             {...register('email')}
-                            className="gkc__registerInput block w-5/6 mx-auto border-2 border-gray-500 rounded-xl h-10 px-2 py-6 text-medium my-4"
+                            className="gkc__registerInput"
                             placeholder=" "
                         />
-                        <label className="gkc__registerInputLabel absolute pointer-events-none text-gray-400" htmlFor="email">Email</label>
-                        <div className='gkc__registerInputIcon absolute text-xl text-gray-500'>
+                        <label className="gkc__registerInputLabel" htmlFor="email">Email</label>
+                        <div className='gkc__registerInputIcon'>
                             <FontAwesomeIcon icon={faAt}/>
                         </div>
                     </div>
-                    <div className="gkc__registerInputError text-sm text-red-500 mb-8">
+                    <div className="gkc__registerInputError">
                         {errors?.email?.message}
                     </div>
 
-                    <div className="relative">
+                    <div className="gkc__registerPasswordInputContainer">
                         <input
                             type={showPassword ? 'text' : 'password'}
                             {...register('password')}
-                            className="gkc__registerInput block w-5/6  mx-auto border-2 border-gray-500 rounded-xl h-10 px-2 py-6 text-medium my-4"
+                            className="gkc__registerInput"
                             placeholder=" "
                         />
-                        <label className="gkc__registerInputLabel absolute pointer-events-none text-gray-400" htmlFor="password">Password</label>
-                        <div className='gkc__registerInputIcon absolute text-xl text-gray-500'>
+                        <label className="gkc__registerInputLabel" htmlFor="password">Password</label>
+                        <div className='gkc__registerInputIcon'>
                             <FontAwesomeIcon className="cursor-pointer" icon={showPassword ? faEye : faEyeSlash} onClick={()=>setShowPassword(prevState => !prevState)} />
                         </div>
                     </div>
-                    <div className="gkc__registerInputError text-sm text-red-500 mb-8">
+                    <div className="gkc__registerInputError">
                         {errors?.password?.message}
                     </div>
 
-                    <div className="relative my-10">
-                        <button disabled={isLoading} className={'gkc__registerSignUpButton font-bold text-medium py-2 text-white w-2/3 rounded-xl'}>
+                    <div className="gkc__registerSubmitButtonContainer">
+                        <button disabled={isLoading} className={'gkc__registerSignUpButton'}>
                             Sign Up  <FontAwesomeIcon icon={faSpinner} size={'1x'} className={`spinner ${!isLoading ? 'hidden': ''}`} />
                         </button>
 
                     </div>
 
-                    <div className="relative my-16 px-4">
-                        <p className="text-gray-500"> Already have an account with us? <Link to={'/login'} className={'gkc__registerLogInButton'}> Log in</Link></p>
+                    <div className="gkc__registerAddendum">
+                        <p> Already have an account with us? <Link to={'/login'} className={'gkc__registerLogInButton'}> Log in</Link></p>
                     </div>
                 </form>
             </div>

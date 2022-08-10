@@ -56,53 +56,53 @@ function Login(){
 
     return (
         <>
-            <div className="min-h-screen flex flex-col items-center justify-center bg-gray-200">
-                <form onSubmit={handleSubmit(mutateAsync)} action="" className=" text-center h-2/3 bg-white w-5/6 sm:w-4/6 lg:w-2/6 rounded shadow-2xl" autoComplete={'off'}>
-                    <div className="gkc__login__logo my-4">
-                        <img src={logo} alt="" className="h-16 mx-auto"/>
+            <div className="gkc__loginContainer">
+                <form onSubmit={handleSubmit(mutateAsync)}  autoComplete={'off'}>
+                    <div className="gkc__loginLogo">
+                        <img src={logo} alt="loginLogo"/>
                     </div>
-                    <p className="text-center text-gray-600 font-bold text-2xl"> Login </p>
+                    <p> Login </p>
 
-                    <div className="relative">
+                    <div className="gkc__loginEmailInputContainer">
                         <input
                             type="text"
                             {...register('email')}
-                            className="gkc__loginInput block w-5/6 mx-auto border-2 border-gray-500 rounded-xl h-10 px-2 py-6 text-medium my-4"
+                            className="gkc__loginInput"
                             placeholder=" "
                         />
-                        <label className="gkc__loginInputLabel absolute pointer-events-none text-gray-400" htmlFor="email">Email</label>
-                        <div className='gkc__loginInputIcon absolute text-xl text-gray-500'>
+                        <label className="gkc__loginInputLabel" htmlFor="email">Email</label>
+                        <div className='gkc__loginInputIcon'>
                             <FontAwesomeIcon icon={faAt}/>
                         </div>
                     </div>
-                    <div className="gkc__loginInputError text-sm text-red-500 mb-8">
+                    <div className="gkc__loginInputError">
                         {errors?.email?.message}
                     </div>
 
-                    <div className="relative">
+                    <div className="gkc__loginPasswordInputContainer">
                         <input
                             type={showPassword ? 'text' : 'password'}
                             {...register('password')}
-                            className="gkc__loginInput block w-5/6  mx-auto border-2 border-gray-500 rounded-xl h-10 px-2 py-6 text-medium my-4"
+                            className="gkc__loginInput"
                             placeholder=" "
                         />
-                        <label className="gkc__loginInputLabel absolute pointer-events-none text-gray-400" htmlFor="password">Password</label>
-                        <div className='gkc__loginInputIcon absolute text-xl text-gray-500'>
+                        <label className="gkc__loginInputLabel" htmlFor="password">Password</label>
+                        <div className='gkc__loginInputIcon'>
                             <FontAwesomeIcon className="cursor-pointer" icon={showPassword ? faEye : faEyeSlash} onClick={()=>setShowPassword(prevState => !prevState)} />
                         </div>
                     </div>
-                    <div className="gkc__loginInputError text-sm text-red-500 mb-8">
+                    <div className="gkc__loginInputError">
                         {errors?.password?.message}
                     </div>
 
-                    <div className="relative my-10">
-                        <button disabled={isLoading} className={'gkc__loginLogInButton font-bold text-medium py-2 text-white w-2/3 rounded-xl'}>
+
+                    <div className="gkc__loginSubmitButtonContainer">
+                        <button disabled={isLoading} className={'gkc__loginLogInButton'}>
                             Log In <FontAwesomeIcon icon={faHurricane} size={'1x'} className={`spinner ${!isLoading ? 'hidden': ''}`} />
                         </button>
                     </div>
-
-                    <div className="relative my-16 px-4">
-                        <p className="text-gray-500"> Don't have an account with us? <Link to={'/register'} className={'gkc__loginRegisterButton'}> Register</Link></p>
+                    <div className="gkc__loginAddendum">
+                        <p> Don't have an account with us? <Link to={'/register'} className={'gkc__loginRegisterButton'}> Register</Link></p>
                     </div>
                 </form>
             </div>
