@@ -5,6 +5,17 @@
     overflow-y: auto;
     font-size: 1.2rem;
     color: #6b7280;
+    width: 300px;
+
+    &Items{
+      padding: 0;
+
+      li{
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+      }
+    }
 
     li{
       padding: 1.5rem 1.5rem 1.2rem 2rem;
@@ -61,4 +72,26 @@
     border-radius: 0.25rem;
   }
 
+}
+
+.modal{
+    &__backdrop{
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    opacity: .8;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #202124;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999999999;
+    }
+
+  &__content{
+    opacity: 1;
+    background-color: white;
+  }
 }

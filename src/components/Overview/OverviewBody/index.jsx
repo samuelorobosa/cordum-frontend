@@ -1,11 +1,12 @@
 import './OverviewBody.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPencil, faBoxArchive, faTrashCan, faLightbulb, faTag} from '@fortawesome/free-solid-svg-icons';
+import {faTrashCan, faTag} from '@fortawesome/free-solid-svg-icons';
 import RichTextEditor from "../RichTextEditor";
 import {useQuery} from "@tanstack/react-query";
 import axios from "axios";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
+import RichTextEditorModal from "../RichTextEditorModal";
 
 function OverviewBody(){
     const getNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note/`;
@@ -23,16 +24,17 @@ function OverviewBody(){
         refetchOnMount: "always",
     });
 
+    const openEditModal = (note) => {
+      console.log(note);
+
+    }
     return(
         <>
             <div className="flex">
                 <div className="gkc__overViewBodySidebar">
-                    <ul>
-                        <li><FontAwesomeIcon icon={faLightbulb}/> &nbsp; Notes</li>
-                        <li><FontAwesomeIcon icon={faPencil}/> &nbsp; Edit Labels </li>
-                        <li><FontAwesomeIcon icon={faTag}/> &nbsp; New Label </li>
-                        <li><FontAwesomeIcon icon={faBoxArchive}/> &nbsp; Archive </li>
-                        <li><FontAwesomeIcon icon={faTrashCan}/> &nbsp; Bin</li>
+                    <ul className="gkc__overViewBodySidebarItems">
+                        <li><FontAwesomeIcon icon={faTag}/> &nbsp; <span>New Label</span> </li>
+                        <li><FontAwesomeIcon icon={faTrashCan}/> &nbsp; <span>Bin</span></li>
                     </ul>
                 </div>
                 <div className="gkc__overViewBodyNotes">
@@ -54,6 +56,7 @@ function OverviewBody(){
                                                                dangerouslySetInnerHTML={{__html: note.body}}
                                                                className="gkc__note"
                                                                key={idx}
+                                                               onClick={()=>{openEditModal(note.body)}}
                                                            />
                                                        </>
                                                    )
@@ -65,6 +68,9 @@ function OverviewBody(){
                        </div>
                     </div>
                 </div>
+            </div>
+            <div className="modal__backdrop">
+                    <RichTextEditorModal/>
             </div>
         </>
     )

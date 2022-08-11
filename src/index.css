@@ -1,6 +1,18 @@
+@font-face {
+    font-family: 'Euclid Circular';
+    src: local('Euclid Circular Medium'), local('Euclid-Circular-Medium'),
+    url('./assets/font/EuclidCircularA-Medium.woff2') format('woff2'),
+    url('./assets/font/EuclidCircularA-Medium.woff') format('woff'),
+    url('./assets/font/EuclidCircularA-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
 html,body{
 margin: 0;
 padding: 0;
+font-family: 'Euclid Circular', sans-serif;
 }
 
 .hidden{

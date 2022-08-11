@@ -8,6 +8,7 @@ $gkc__loginBlue : rgb(85, 123, 231);
     width: 83.333333%;
     border-radius: 0.25rem;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    border: none;
 
     &:focus{
       border:2px solid $gkc__loginBlue;

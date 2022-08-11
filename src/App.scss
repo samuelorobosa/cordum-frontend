@@ -1,13 +1,9 @@
 body{
   background-color: white;
-  font-family: 'Epilogue', sans-serif;
 }
 
 .spinner {
   animation: spin infinite 700ms linear;
-
-  /*You can increase or decrease the timer (5s) to
-   increase or decrease the speed of the spinner*/
 }
 
 @keyframes spin {

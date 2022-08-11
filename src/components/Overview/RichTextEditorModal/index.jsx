@@ -1,6 +1,4 @@
 import { Editor } from '@tinymce/tinymce-react';
-import './RichTextEditor.scss';
-
 // TinyMCE so the global var exists
 // eslint-disable-next-line no-unused-vars
 import tinymce from 'tinymce/tinymce';
@@ -53,7 +51,7 @@ import axios from "axios";
 import AuthenticationContext from "../../../context/Authentication/AuthenticationContext";
 
 
-export default function RichTextEditor(props) {
+export default function RichTextEditorModal(props) {
     let {user} = useContext(AuthenticationContext);
     const queryClient = useQueryClient();
     const {init, ...rest} = props;
@@ -82,12 +80,13 @@ export default function RichTextEditor(props) {
     };
 
     return (
-        <div className="gkc__richTextEditor">
+        <div>
             <Editor
                 {...rest}
                 onInit={(evt, editor) => editorRef.current = editor}
                 placeholder='<p>Take a note.....</p>'
                 init={{
+                    skin: 'oxide',
                     height: 300,
                     menubar: false,
                     plugins: [
