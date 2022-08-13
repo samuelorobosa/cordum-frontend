@@ -34,3 +34,7 @@ font-family: 'Euclid Circular', sans-serif;
 .flex{
     display: flex;
 }
+
+.items-center{
+    align-items: center;
+}

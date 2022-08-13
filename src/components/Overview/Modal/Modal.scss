@@ -1,0 +1,28 @@
+.gkc{
+  &__Modal{
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  &__ModalSaveButtonContainer{
+    margin: 0 auto;
+    width: 20%;
+
+    button{
+      width: 100%;
+      display: block;
+      color: white;
+      font-weight: 700;
+      position: relative;
+      z-index: 10;
+      cursor: pointer;
+      padding-top: .7rem;
+      padding-bottom: .7rem;
+      font-size: 14px;
+      margin: -0.75rem auto 0;
+      background-color: #2563eb;
+      border-radius: 1rem;
+      border: none;
+    }
+  }
+}

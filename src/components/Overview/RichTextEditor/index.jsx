@@ -84,6 +84,7 @@ export default function RichTextEditor(props) {
     return (
         <div className="gkc__richTextEditor">
             <Editor
+                apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
                 {...rest}
                 onInit={(evt, editor) => editorRef.current = editor}
                 placeholder='<p>Take a note.....</p>'

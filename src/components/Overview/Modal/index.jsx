@@ -1,4 +1,6 @@
 import { Editor } from '@tinymce/tinymce-react';
+import './Modal.scss';
+
 // TinyMCE so the global var exists
 // eslint-disable-next-line no-unused-vars
 import tinymce from 'tinymce/tinymce';
@@ -43,7 +45,7 @@ import 'tinymce/plugins/visualblocks';
 import 'tinymce/plugins/visualchars';
 import 'tinymce/plugins/wordcount';
 import 'tinymce/plugins/emoticons/js/emojis';
-import {useContext, useRef} from "react";
+import {useContext, useEffect, useRef} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import  {faFloppyDisk, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
@@ -51,14 +53,15 @@ import axios from "axios";
 import AuthenticationContext from "../../../context/Authentication/AuthenticationContext";
 
 
-export default function RichTextEditorModal(props) {
+export default function Modal(props) {
     let {user} = useContext(AuthenticationContext);
     const queryClient = useQueryClient();
     const {init, ...rest} = props;
-    const editorRef = useRef(null);
-    const saveNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note/`;
-    const {isLoading, mutate} = useMutation((body)=>{
-        return axios.post(saveNotesEndpoint, {body}, {
+    const editorRefII = useRef(null);
+    const {isLoading, mutate} = useMutation(({body, id})=>{
+        console.log(body);
+    const updateNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note/${id}`;
+        return axios.put(updateNotesEndpoint, {body:body}, {
             headers : {
                 'Accept': 'application/json',
                 'Access-Control-Allow-Origin': 'http://localhost:3000/',
@@ -69,26 +72,27 @@ export default function RichTextEditorModal(props) {
         onSuccess: () => queryClient.invalidateQueries(['fetch__notes'], {exact: true}),
     });
 
-    const handleSubmit = (e) => {
-        if (editorRef.current && editorRef.current.getContent().length > 0) {
-            let body = editorRef.current.getContent();
-            mutate(body);
-            editorRef.current.setContent('');
-        } else {
-            console.log("Can't save an empty note");
+    const handleUpdate = (e) => {
+        if (editorRefII.current && editorRefII.current.getContent().length > 0) {
+            let body = editorRefII.current.getContent();
+            mutate({body: body, id:props.note.id});
+            editorRefII.current.setContent('');
         }
     };
 
     return (
-        <div>
+        <>
             <Editor
+                apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
+                initialValue={props.note.body}
                 {...rest}
-                onInit={(evt, editor) => editorRef.current = editor}
-                placeholder='<p>Take a note.....</p>'
+                onInit={(evt, editor) => {
+                    editorRefII.current = editor;
+                }}
                 init={{
-                    skin: 'oxide',
-                    height: 300,
+                    height: 500,
                     menubar: false,
+                    placeholder: 'Write your note here',
                     plugins: [
                         'advlist', 'anchor', 'autolink', 'help', 'image', 'link', 'lists',
                         'searchreplace', 'table', 'wordcount'
@@ -101,13 +105,13 @@ export default function RichTextEditorModal(props) {
                 }}
             />
 
-            <div className={'gkc__richTextEditorSaveButtonContainer'}>
-                <button onClick={handleSubmit}>
-                    Save&nbsp;{isLoading ?
+            <div className={'gkc__ModalSaveButtonContainer'}>
+                <button onClick={handleUpdate}>
+                    Save Changes&nbsp;{isLoading ?
                     <FontAwesomeIcon icon={faSpinner} size={'1x'} className={`text-white spinner`} /> :
                     <FontAwesomeIcon icon={faFloppyDisk} size={'1x'} className={`text-white`} />}
                 </button>
             </div>
-        </div>
+    </>
     );
 }
