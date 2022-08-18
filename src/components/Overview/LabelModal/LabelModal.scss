@@ -1,0 +1,36 @@
+$gkc__loginBlue : rgb(85, 123, 231);
+
+.gkc__{
+  &labelModal{
+    &Container{
+      background-color: white;
+      border-radius: .25rem;
+      padding: 0.4rem 0.8rem 1.4rem 0.8rem;
+
+      h3{
+        text-align: center;
+      }
+    }
+  }
+
+  &labelCheckboxContainer{
+    input[type="checkbox"]{
+      margin-right: .5rem;
+    }
+  }
+
+  &labelModalSubmitButton{
+    background-color: $gkc__loginBlue;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    padding: .4rem .8rem;
+    cursor: pointer;
+    font-weight: 700;
+    &Container{
+      margin-top: .5rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

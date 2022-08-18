@@ -1,84 +1,13 @@
 $gkc__loginBlue : rgb(85, 123, 231);
 
 .gkc{
-  &__overViewBodySidebar{
-    font-weight: 500;
-    height: calc(100vh - 60px);
-    overflow-y: auto;
-    font-size: 1.2rem;
-    color: #6b7280;
-    width: 300px;
 
-    &Items{
-      padding: 0;
-
-      li{
-        display: flex;
-        align-items: center;
-        font-size: 16px;
-      }
-    }
-
-    li{
-      padding: 1.5rem 1.5rem 1.2rem 2rem;
-      border-top-right-radius: 30px;
-      border-bottom-right-radius: 30px;
-      list-style: none;
-
-      &:hover{
-        background-color: #e2dcdc;
-      }
-    }
+  &__mainIcon{
+    color: $gkc__loginBlue;
   }
 
-  &__skeletonContainer{
-   display: contents;
-  }
-
-  &__overViewBodyNotes{
-    margin-left: 2.5rem;
-    flex-grow: 1;
-    &Form{
-      margin-top: 2.5rem;
-    }
-  }
-
-  &__richTextEditorWrapper{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-
-  &__overViewBodyNotesContent{
-    flex-grow: 1;
-    &Placeholder{
-      padding-left: 1rem;
-      padding-right: 1rem;
-      margin-top: 5rem;
-
-      &__inner{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        position: relative;
-        flex-grow: 1;
-        gap: 0.5rem;
-        vertical-align: top;
-      }
-    }
-  }
-
-  &__note{
-    cursor: pointer;
-    padding: 1.25rem;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px #9ca3af;
-    border-radius: 0.25rem;
-    flex-grow: 1;
-  }
-
-}
-
-.gkc{
-  &__modal{
+  &__modal,
+  &__attachModal{
     &Backdrop{
       height: 100vh;
       position: fixed;
@@ -105,6 +34,15 @@ $gkc__loginBlue : rgb(85, 123, 231);
     top: 1px;
     color: white;
 
+  }
+  
+  &__addNewLabel{
+    cursor: pointer;
+
+    &:hover{
+      color: $gkc__loginBlue;
+      transition: all ease-in-out 200ms;
+    }
   }
 }
 
@@ -141,6 +79,34 @@ $gkc__loginBlue : rgb(85, 123, 231);
         background-color: #e9ecef
       }
     }
+}
+
+.dropdown__LabelContent{
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  padding: 0.5rem 0;
+  border-radius: 0.25rem;
+  color: #212529;
+  list-style-type: none;
+  width: 150px;
+  z-index: 122;
+  margin: .12rem;
+  right: 20px;
+  display: none;
+  h4{
+    padding: .25rem;
+    text-align: center;
+    margin-top: 1px;
+    margin-bottom: 5px;
+  }
+  li{
+    padding: .25rem;
+    cursor: pointer;
+    &:hover{
+      background-color: #e9ecef
+    }
+  }
 }
 
 .dropdown__Show{

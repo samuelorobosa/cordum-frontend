@@ -38,3 +38,40 @@ font-family: 'Euclid Circular', sans-serif;
 .items-center{
     align-items: center;
 }
+
+input{
+    font-family: 'Euclid Circular', sans-serif;
+}
+
+input::-webkit-input-placeholder {
+    font-family: 'Euclid Circular', sans-serif;
+}
+
+input:-ms-input-placeholder {
+    font-family: 'Euclid Circular', sans-serif;
+}
+
+input:-moz-placeholder {
+    font-family: 'Euclid Circular', sans-serif;
+}
+
+input::-moz-placeholder {
+    font-family: 'Euclid Circular', sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+     width: 5px;
+    height: 5px;
+ }
+
+/* Track */
+::-webkit-scrollbar-track {
+     border-radius: 10px;
+ }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+     background: rgba(0,0,0,.08);;
+     border-radius: 10px;
+ }

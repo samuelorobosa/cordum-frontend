@@ -25,7 +25,7 @@ $gkc__loginDarkBlue : rgb(53,91,192);
      width: 83.333333%;
      border: 2px solid #6b7280;
      border-radius: 0.75rem;
-     height: 2.5rem;
+     height: 0.2rem;
      padding: 1.5rem 0.5rem;
    }
 
@@ -58,6 +58,8 @@ $gkc__loginDarkBlue : rgb(53,91,192);
     color: white;
     border-radius: 0.75rem;
     width: 66.666667%;
+     border: none;
+     font-size: 1.25rem;
      &:hover{
        background-color: $gkc__loginBlue;
      }
