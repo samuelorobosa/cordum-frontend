@@ -1,5 +1,5 @@
 # Cordum - FrontEnd
-![Cordum Screenshot]()
+![Cordum Screenshot](https://github.com/samuelorobosa/cordum-frontend/blob/main/public/application-view.png?raw=true)
 ## Quick Overview
  Cordum is a web application that enables user take notes in rich text and label them according to their respective categories.
 
