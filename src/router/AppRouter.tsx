@@ -5,6 +5,8 @@ import Login from "../components/Authentication/Login";
 import Register from "../components/Authentication/Register";
 import Overview from "../components/Overview";
 import AuthenticationContext from "../context/Authentication/AuthenticationContext";
+import ForgotPassword from "../components/Authentication/ForgotPassword";
+import ResetPassword from "../components/Authentication/ResetPassword";
 
 function AppRouter(){
     const {dispatch} = useContext(AuthenticationContext);
@@ -27,6 +29,8 @@ function AppRouter(){
             <Routes>
                 <Route path="/login" element={<Login/>} />
                 <Route path="/register" element={<Register/>} />
+                <Route path="/forgot-password" element={<ForgotPassword/>} />
+                <Route path="/reset-password" element={<ResetPassword/>} />
                 <Route path="/" element={<PrivateRoute/>} >
                     <Route path="/" element={<Overview/>} />
                 </Route>

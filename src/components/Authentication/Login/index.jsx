@@ -95,7 +95,9 @@ function Login(){
                         {errors?.password?.message}
                     </div>
 
-
+                    <div className="gkc__forgotPassword">
+                           <Link to="/forgot-password">Forgot Password?</Link>
+                    </div>
                     <div className="gkc__loginSubmitButtonContainer">
                         <button disabled={isLoading} className={'gkc__loginLogInButton'}>
                             Log In <FontAwesomeIcon icon={faHurricane} size={'1x'} className={`spinner ${!isLoading ? 'hidden': ''}`} />
