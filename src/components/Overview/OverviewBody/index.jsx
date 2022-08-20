@@ -98,7 +98,7 @@ function OverviewBody() {
                                         <div className="gkc__overViewBodyNotesContentPlaceholder__inner">
                                             {
                                                 isFetching ?
-                                                    <Skeleton inline={true} height={200} count={9} containerClassName="gkc__skeletonContainer" /> :
+                                                    <Skeleton inline={true} height={200} count={3} containerClassName="gkc__skeletonContainer" /> :
                                                     data?.data?.notes.map((note, idx)=>{
                                                         return(
                                                             <div key={idx} className="flex relative">

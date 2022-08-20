@@ -6,16 +6,16 @@ $gkc__registerDarkBlue : rgb(53,91,192);
      outline: none;
      &:focus{
        border-color: $gkc__registerBlue;
-       ~ .gkc__loginInputLabel{
+       ~ .gkc__registerInputLabel{
          top: -11px;
        }
-       ~ .gkc__loginInputIcon{
+       ~ .gkc__registerInputIcon{
          color: $gkc__registerBlue;
        }
      }
 
      &:not(:placeholder-shown){
-       ~ .gkc__loginInputLabel{
+       ~ .gkc__registerInputLabel{
          top: -11px;
        }
      }
