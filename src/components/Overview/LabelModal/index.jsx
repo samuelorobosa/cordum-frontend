@@ -35,20 +35,24 @@ export default function LabelModal({note}) {
                         {
                             isLabelFetching ?
                                 <div className="spinner"/> :
-                                data?.data?.map((label, idx)=>{
-
-                                    return(
-                                        <div className="gkc__labelCheckboxContainer" key={idx}>
-                                            <input
-                                                defaultChecked={note.labels.some(noteLabel => noteLabel.id === label.id)}
-                                                onChange={e =>handleLabelSync(e)}
-                                                type="checkbox"
-                                                name="label"
-                                                id={label.id}/>
-                                            <label htmlFor={label.id}>{label.name}</label>
-                                        </div>
-                                    )
-                                })
+                                <>
+                                    {
+                                        data?.data.length > 0 ?
+                                            data?.data?.map((label, idx)=>{
+                                                return(
+                                                    <div className="gkc__labelCheckboxContainer" key={idx}>
+                                                        <input
+                                                            defaultChecked={note.labels.some(noteLabel => noteLabel.id === label.id)}
+                                                            onChange={e =>handleLabelSync(e)}
+                                                            type="checkbox"
+                                                            name="label"
+                                                            id={label.id}/>
+                                                        <label htmlFor={label.id}>{label.name}</label>
+                                                    </div>
+                                                )
+                                            }) : <div className="gkc__labelModalEmpty">No labels found, open the sidebar to create one.</div>
+                                    }
+                                </>
                         }
                         <div className="gkc__labelModalSubmitButtonContainer">
                             <button type="submit" className="gkc__labelModalSubmitButton">
