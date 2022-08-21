@@ -82,26 +82,28 @@ export default function RichTextEditor(props) {
     };
 
     return (
-        <div className="gkc__richTextEditor">
-            <Editor
-                apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
-                {...rest}
-                onInit={(evt, editor) => editorRef.current = editor}
-                placeholder='<p>Take a note.....</p>'
-                init={{
-                    height: 300,
-                    menubar: false,
-                    plugins: [
-                        'advlist', 'anchor', 'autolink', 'help', 'image', 'link', 'lists',
-                        'searchreplace', 'table', 'wordcount'
-                    ],
-                    toolbar: 'undo redo | blocks | ' +
-                        'bold italic forecolor | alignleft aligncenter ' +
-                        'alignright alignjustify | bullist numlist outdent indent | ' +
-                        'removeformat | help',
-                    content_style: 'body { font-family: Lato,sans-serif; font-size:14px }'
-                }}
-            />
+        <>
+            <div className="gkc__richTextEditor">
+                <Editor
+                    apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
+                    {...rest}
+                    onInit={(evt, editor) => editorRef.current = editor}
+                    placeholder='<p>Take a note.....</p>'
+                    init={{
+                        height: 300,
+                        menubar: false,
+                        plugins: [
+                            'advlist', 'anchor', 'autolink', 'help', 'image', 'link', 'lists',
+                            'searchreplace', 'table', 'wordcount'
+                        ],
+                        toolbar: 'undo redo | blocks | ' +
+                            'bold italic forecolor | alignleft aligncenter ' +
+                            'alignright alignjustify | bullist numlist outdent indent | ' +
+                            'removeformat | help',
+                        content_style: 'body { font-family: Lato,sans-serif; font-size:14px }'
+                    }}
+                />
+            </div>
 
             <div className={'gkc__richTextEditorSaveButtonContainer'}>
                 <button onClick={handleSubmit}>
@@ -110,6 +112,6 @@ export default function RichTextEditor(props) {
                     <FontAwesomeIcon icon={faFloppyDisk} size={'1x'} className={`text-white`} />}
                 </button>
             </div>
-        </div>
+        </>
     );
 }
