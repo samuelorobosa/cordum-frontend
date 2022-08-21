@@ -1,7 +1,7 @@
 import {useForm} from "react-hook-form";
 import './ForgotPassword.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faAt, faHurricane} from '@fortawesome/free-solid-svg-icons'
+import {faAt, faSpinner} from '@fortawesome/free-solid-svg-icons'
 import logo from '../../../logo.svg';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
@@ -63,7 +63,7 @@ function ForgotPassword(){
 
                     <div className="gkc__forgotPasswordSubmitButtonContainer">
                         <button disabled={isLoading} className={'gkc__forgotPasswordButton'}>
-                            Reset Password <FontAwesomeIcon icon={faHurricane} size={'1x'} className={`spinner ${!isLoading ? 'hidden': ''}`} />
+                            Reset Password <FontAwesomeIcon icon={faSpinner} size={'1x'} className={`spinner ${!isLoading ? 'hidden': ''}`} />
                         </button>
                     </div>
                 </form>

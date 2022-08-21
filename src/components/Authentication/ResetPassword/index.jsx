@@ -1,7 +1,7 @@
 import {useForm} from "react-hook-form";
 import './ResetPassword.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faAt, faEye, faEyeSlash, faHurricane} from '@fortawesome/free-solid-svg-icons'
+import {faAt, faEye, faEyeSlash, faSpinner} from '@fortawesome/free-solid-svg-icons'
 import logo from '../../../logo.svg';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
@@ -11,7 +11,7 @@ import {toast} from "react-toastify";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-function ResetPassword(options){
+function ResetPassword(){
     const navigate = useNavigate();
     const params = new URLSearchParams(window.location.search);
     const resetToken = params.get('token');
@@ -102,7 +102,7 @@ function ResetPassword(options){
 
                     <div className="gkc__resetPasswordSubmitButtonContainer">
                         <button disabled={isLoading} className={'gkc__resetPasswordButton'}>
-                            Update Password <FontAwesomeIcon icon={faHurricane} size={'1x'} className={`spinner ${!isLoading ? 'hidden': ''}`} />
+                            Update Password <FontAwesomeIcon icon={faSpinner} size={'1x'} className={`spinner ${!isLoading ? 'hidden': ''}`} />
                         </button>
                     </div>
                 </form>

@@ -1,6 +1,6 @@
 import './OverviewBody.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCampground, faChevronDown, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import {faChevronDown, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import RichTextEditor from "../RichTextEditor";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -98,33 +98,38 @@ function OverviewBody() {
                                         <div className="gkc__overViewBodyNotesContentPlaceholder__inner">
                                             {
                                                 isFetching ?
-                                                    <Skeleton inline={true} height={200} count={3} containerClassName="gkc__skeletonContainer" /> :
-                                                    data?.data?.notes.map((note, idx)=>{
-                                                        return(
-                                                            <div key={idx} className="flex relative">
-                                                                <div className="gkc__noteOptions">
-                                                                    <div className="relative">
-                                                                        <div onClick={event =>handleDropdownClick(event,idx, 'dropdown__Content')} className={`dropdown__Button`}>
-                                                                            <span>Actions</span> &nbsp; <FontAwesomeIcon icon={ faChevronDown}/>
+                                                    <Skeleton inline={true} height={200} count={4} containerClassName="gkc__skeletonContainer" />:
+                                                    <>
+                                                        {
+                                                            data.data.notes > 0 ?
+                                                                data?.data?.notes.map((note, idx)=>{
+                                                                return(
+                                                                    <div key={idx} className="flex relative">
+                                                                        <div className="gkc__noteOptions">
+                                                                            <div className="relative">
+                                                                                <div onClick={event =>handleDropdownClick(event,idx, 'dropdown__Content')} className={`dropdown__Button`}>
+                                                                                    <span>Actions</span> &nbsp; <FontAwesomeIcon icon={ faChevronDown}/>
+                                                                                </div>
+                                                                                <ul className={`dropdown__Content dropdown__Content${idx}`}>
+                                                                                    <li onClick={()=>{openModal({id: note.id, body: note.body, labels:note.labels})}}>
+                                                                                        View/Edit
+                                                                                    </li>
+                                                                                    <li onClick={()=>mutate(note.id)} className="flex items-center">
+                                                                                        <span>Delete</span> &nbsp;
+                                                                                        <FontAwesomeIcon icon={faSpinner} className={`spinner ${isLoading ? '' : 'hidden'}`}/>
+                                                                                    </li>
+                                                                                    <li onClick={()=>openAttachModal({id:note.id, labels:note.labels})} className="relative">
+                                                                                        <span>Sync Labels</span>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
                                                                         </div>
-                                                                        <ul className={`dropdown__Content dropdown__Content${idx}`}>
-                                                                            <li onClick={()=>{openModal({id: note.id, body: note.body, labels:note.labels})}}>
-                                                                                View/Edit
-                                                                            </li>
-                                                                            <li onClick={()=>mutate(note.id)} className="flex items-center">
-                                                                                <span>Delete</span> &nbsp;
-                                                                                <FontAwesomeIcon icon={faSpinner} className={`spinner ${isLoading ? '' : 'hidden'}`}/>
-                                                                            </li>
-                                                                            <li onClick={()=>openAttachModal({id:note.id, labels:note.labels})} className="relative">
-                                                                                <span>Sync Labels</span>
-                                                                            </li>
-                                                                        </ul>
+                                                                        <Note note={note}/>
                                                                     </div>
-                                                                </div>
-                                                                <Note note={note}/>
-                                                            </div>
-                                                        )
-                                                    })
+                                                                )
+                                                            }) : <p className="placeholderText"> Your notes will appear here.</p>
+                                                        }
+                                                    </>
                                             }
                                         </div>
                                     </div>

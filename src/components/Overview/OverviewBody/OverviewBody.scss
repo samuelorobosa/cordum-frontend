@@ -114,6 +114,14 @@ $gkc__loginBlue : rgb(85, 123, 231);
   animation: __dropdownShowIn ease-in-out 200ms;
 }
 
+.placeholderText{
+  font-size: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #9ca3af;
+}
+
 @keyframes __modalFadeIn {
   from{
     transform: scale(.5);
@@ -137,6 +145,7 @@ $gkc__loginBlue : rgb(85, 123, 231);
     transform: scaleY(1)
   }
 }
+
 
 
 ///Utility Classes
