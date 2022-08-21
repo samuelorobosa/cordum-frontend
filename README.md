@@ -20,6 +20,7 @@
 - `React Toastify`
 - `React Hook Forms`
 - `TypeScript`
+- `React Query`
 -  `Others if needed...`
  
 ## Setup
