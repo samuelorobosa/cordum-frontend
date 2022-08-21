@@ -2,13 +2,19 @@
   &__Modal{
     margin: 0 auto;
     width: 90%;
+    &Editor{
+        background-color: white;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        margin: 0 auto;
+    }
   }
 
   &__ModalSaveButtonContainer{
     margin: 0 auto;
 
     button{
-      width: 100%;
+      width: 50%;
       display: block;
       color: white;
       font-weight: 700;

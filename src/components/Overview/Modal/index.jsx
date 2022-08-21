@@ -81,7 +81,7 @@ export default function Modal(props) {
 
     return (
         <>
-            <div className="gkc__richTextEditor">
+            <div className="gkc__ModalEditor">
                 <Editor
                     apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
                     initialValue={props.note.body}
