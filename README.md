@@ -24,6 +24,11 @@
 -  `Others if needed...`
  
 ## Setup
-1.  Run `git clone`
-2. Cd into `Cordum-FrontEnd`
-3. Repeat steps 1 and 2 for `Cordum-Frontend` (You can find the link to that repo at the bottom of this document).
+1. Make sure you've followed the steps in [Cordum-Backend](https://github.com/samuelorobosa/cordum-backend)
+2. Run `git clone`
+3. Cd into `Cordum-FrontEnd`
+4. Repeat steps 1 and 2 for `Cordum-Backend`
+5. Run `npm install`
+6. Run `npm start`
+7. Open `http://localhost:3000`
+8. You should be able to see the application in action.
