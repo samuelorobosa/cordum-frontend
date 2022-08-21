@@ -39,7 +39,7 @@ function SideBar({handleSideBar, open}) {
   return (
           <>
               <nav className="gkc__navbarContainer">
-                  <div>
+                  <div className="gkc__sideBarToggle">
                       <FontAwesomeIcon onClick={handleSideBar} icon={faBarsStaggered} size="2x" className={'gkc__navbarIcon'} />
                   </div>
                   <header className="gkc__navbarBrand">

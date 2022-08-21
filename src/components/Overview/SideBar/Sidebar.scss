@@ -137,6 +137,7 @@ $gkc__loginBlue : rgb(85, 123, 231);
   }
   &__navbarContainer{
     display: flex;
+    align-items: center;
     padding: 1.25rem 1rem;
     font-size: 2rem;
     justify-content: space-between;
@@ -162,6 +163,9 @@ $gkc__loginBlue : rgb(85, 123, 231);
       font-weight: 700;
       color: #9ca3af;
     }
+  }
+  &__sideBarToggle{
+    transform: translateY(-15px);
   }
 }
 
