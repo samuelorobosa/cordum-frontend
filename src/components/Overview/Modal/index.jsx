@@ -82,28 +82,30 @@ export default function Modal(props) {
 
     return (
         <>
-            <Editor
-                apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
-                initialValue={props.note.body}
-                {...rest}
-                onInit={(evt, editor) => {
-                    editorRefII.current = editor;
-                }}
-                init={{
-                    height: 500,
-                    menubar: false,
-                    placeholder: 'Write your note here',
-                    plugins: [
-                        'advlist', 'anchor', 'autolink', 'help', 'image', 'link', 'lists',
-                        'searchreplace', 'table', 'wordcount'
-                    ],
-                    toolbar: 'undo redo | blocks | ' +
-                        'bold italic forecolor | alignleft aligncenter ' +
-                        'alignright alignjustify | bullist numlist outdent indent | ' +
-                        'removeformat | help',
-                    content_style: 'body { font-family: Lato,sans-serif; font-size:14px }'
-                }}
-            />
+            <div className="gkc__richTextEditor">
+                <Editor
+                    apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
+                    initialValue={props.note.body}
+                    {...rest}
+                    onInit={(evt, editor) => {
+                        editorRefII.current = editor;
+                    }}
+                    init={{
+                        height: 500,
+                        menubar: false,
+                        placeholder: 'Write your note here',
+                        plugins: [
+                            'advlist', 'anchor', 'autolink', 'help', 'image', 'link', 'lists',
+                            'searchreplace', 'table', 'wordcount'
+                        ],
+                        toolbar: 'undo redo | blocks | ' +
+                            'bold italic forecolor | alignleft aligncenter ' +
+                            'alignright alignjustify | bullist numlist outdent indent | ' +
+                            'removeformat | help',
+                        content_style: 'body { font-family: Lato,sans-serif; font-size:14px }'
+                    }}
+                />
+            </div>
 
             <div className={'gkc__ModalSaveButtonContainer'}>
                 <button onClick={handleUpdate}>
