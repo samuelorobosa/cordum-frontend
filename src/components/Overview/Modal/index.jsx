@@ -59,7 +59,6 @@ export default function Modal(props) {
     const {init, ...rest} = props;
     const editorRefII = useRef(null);
     const {isLoading, mutate} = useMutation(({body, id})=>{
-        console.log(body);
     const updateNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note/${id}`;
         return axios.put(updateNotesEndpoint, {body:body}, {
             headers : {
