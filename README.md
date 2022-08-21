@@ -27,8 +27,9 @@
 1. Make sure you've followed the steps in [Cordum-Backend](https://github.com/samuelorobosa/cordum-backend)
 2. Run `git clone`
 3. Cd into `Cordum-FrontEnd`
-4. Repeat steps 1 and 2 for `Cordum-Backend`
-5. Run `npm install`
+4. Run `npm install`
+5. Create an `.env`  file from the `.env.example` file, and configure it accordingly.
 6. Run `npm start`
 7. Open `http://localhost:3000`
 8. You should be able to see the application in action.
+9. Start hacking!
