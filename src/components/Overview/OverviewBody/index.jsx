@@ -46,7 +46,7 @@ function OverviewBody() {
     const handleDropdownClick = (event, index, className) => {
         const currentDropdown = document.querySelector(`.${className + index}`);
             if(className === 'dropdown__Content'){
-                dropDownArray.map(el =>{
+                dropDownArray.forEach(el =>{
                         if (el !== currentDropdown){
                             el.classList.remove('dropdown__Show');
                         }
@@ -72,7 +72,7 @@ function OverviewBody() {
                 if(!event.target.matches('.dropdown__Content') && !event.target.matches('.dropdown__Content *')){
                     let tempdropDownNodeList = document.querySelectorAll(`.dropdown__Content`);
                     let tempdropDownArray = [...tempdropDownNodeList];
-                    tempdropDownArray.map(el => {
+                    tempdropDownArray.forEach(el => {
                         el.classList.remove('dropdown__Show')
                     });
                 }
@@ -101,7 +101,7 @@ function OverviewBody() {
                                                     <Skeleton inline={true} height={200} count={4} containerClassName="gkc__skeletonContainer" />:
                                                     <>
                                                         {
-                                                            data.data.notes > 0 ?
+                                                            data.data.notes.length > 0 ?
                                                                 data?.data?.notes.map((note, idx)=>{
                                                                 return(
                                                                     <div key={idx} className="flex relative">

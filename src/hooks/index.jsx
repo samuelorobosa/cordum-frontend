@@ -63,7 +63,7 @@ export const useCreateLabelMutation = (query, newLabel, sideEffectError, sideEff
 
     const createLabelEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/label`;
 
-    const {isLoading, mutate, isSuccess, isError} = useMutation(query, () => {
+    const {isLoading, mutate} = useMutation(query, () => {
         return axios.post(createLabelEndpoint, {name: newLabel}, {
             headers: {
                 'Accept': 'application/json',

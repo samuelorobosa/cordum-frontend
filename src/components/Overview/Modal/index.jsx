@@ -45,7 +45,7 @@ import 'tinymce/plugins/visualblocks';
 import 'tinymce/plugins/visualchars';
 import 'tinymce/plugins/wordcount';
 import 'tinymce/plugins/emoticons/js/emojis';
-import {useContext, useEffect, useRef} from "react";
+import {useContext, useRef} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import  {faFloppyDisk, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
