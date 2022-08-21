@@ -2,12 +2,12 @@ import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import axios from "axios";
 
 export const useGetLabelsQuery = (query) => {
-    const getLabelsEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/label/`;
+    const getLabelsEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/label`;
     const fetchLabels = () => {
         return axios.get(getLabelsEndpoint,{
             headers: {
                 'Accept': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:3000/',
+                'Access-Control-Allow-Origin': '*',
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('gkc__auth')).access_token}`
             }
         })
@@ -21,12 +21,12 @@ export const useGetLabelsQuery = (query) => {
 
 
 export const useGetNotesQuery = (query) => {
-    const getNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note/`;
+    const getNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note`;
     const fetchNotes = () => {
         return axios.get(getNotesEndpoint,{
             headers: {
                 'Accept': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:3000/',
+                'Access-Control-Allow-Origin': '*',
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('gkc__auth')).access_token}`
             }
         })
@@ -46,7 +46,7 @@ export const useDeleteNotesMutation = (query) => {
         return axios.delete(deleteNoteEndpoint, {
             headers: {
                 'Accept': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:3000/',
+                'Access-Control-Allow-Origin': '*',
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('gkc__auth')).access_token}`
             }
         })
@@ -61,14 +61,14 @@ export const useDeleteNotesMutation = (query) => {
 export const useCreateLabelMutation = (query, newLabel, sideEffectError, sideEffectSuccess) => {
     let queryClient = useQueryClient();
 
-    const createLabelEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/label/`;
+    const createLabelEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/label`;
 
     const {isLoading, mutate, isSuccess, isError} = useMutation(query, () => {
         return axios.post(createLabelEndpoint, {name: newLabel}, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:3000/',
+                'Access-Control-Allow-Origin': '*',
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('gkc__auth')).access_token}`
             },
         });
@@ -94,7 +94,7 @@ export const useDeleteLabelMutation = (query, sideEffectError) => {
         return axios.delete(deleteLabelEndpoint, {
             headers: {
                 'Accept': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:3000/',
+                'Access-Control-Allow-Origin': '*',
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('gkc__auth')).access_token}`
             },
         });
@@ -120,7 +120,7 @@ export const useSyncLabelsMutation  = (query, noteId, sideEffectError, sideEffec
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:3000/',
+                'Access-Control-Allow-Origin': '*',
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('gkc__auth')).access_token}`
             },
         });

@@ -58,7 +58,7 @@ export default function RichTextEditor(props) {
     const queryClient = useQueryClient();
     const {init, ...rest} = props;
     const editorRef = useRef(null);
-    const saveNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note/`;
+    const saveNotesEndpoint = `${process.env.REACT_APP_BACKEND_HOST}/api/note`;
     const {isLoading, mutate} = useMutation((body)=>{
         return axios.post(saveNotesEndpoint, {body}, {
             headers : {
