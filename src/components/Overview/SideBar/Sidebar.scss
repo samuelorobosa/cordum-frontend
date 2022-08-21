@@ -13,6 +13,8 @@ $gkc__loginBlue : rgb(85, 123, 231);
     border: none;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    outline: none;
+    width: 100%;
     &:hover{
       background-color: #dcdcdc;
     }
@@ -26,7 +28,7 @@ $gkc__loginBlue : rgb(85, 123, 231);
       position: absolute;
       left: 15px;
       color:  white;
-      padding: .25rem;
+      padding: .29rem;
       border-radius: 50%;
       cursor: pointer;
       background-color: #8ae78a;
@@ -55,11 +57,11 @@ $gkc__loginBlue : rgb(85, 123, 231);
     transform: translateX(-220px);
     left: 0;
     overflow-x: hidden;
-    transition: all 0.5s ease-out;
+    transition: all 0.2s ease-in-out;
     transition-delay: 0.2s;
     background-color: white;
     z-index: 999;
-    box-shadow: 0 16px 10px 0 rgb(0 0 0 / 14%), 0 11px 18px 0 rgb(0 0 0 / 12%), 0 13px 5px -1px rgb(0 0 0 / 20%);
+    //box-shadow: 0 16px 10px 0 rgb(0 0 0 / 14%), 0 11px 18px 0 rgb(0 0 0 / 12%), 0 13px 5px -1px rgb(0 0 0 / 20%);
 
     &Items{
       padding: 0;
