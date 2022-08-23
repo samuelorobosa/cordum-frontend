@@ -43,7 +43,6 @@ function SideBar({handleSideBar, open}) {
                       <FontAwesomeIcon onClick={handleSideBar} icon={faBarsStaggered} size="2x" className={'gkc__navbarIcon'} />
                   </div>
                   <header className="gkc__navbarBrand">
-                      <FontAwesomeIcon icon={faCampground} size="1x" className="gkc__mainIcon" />
                       &nbsp;
                       <span>Cordum</span>
                   </header>
