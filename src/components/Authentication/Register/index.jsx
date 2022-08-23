@@ -12,6 +12,7 @@ import {useMutation} from "@tanstack/react-query";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 import AuthenticationContext from "../../../context/Authentication/AuthenticationContext";
+import {Helmet} from "react-helmet";
 
 function Register(){
     const {dispatch} = useContext(AuthenticationContext)
@@ -61,6 +62,9 @@ function Register(){
 
     return (
         <>
+            <Helmet>
+                <title>Cordum|Register</title>
+            </Helmet>
             <div className="gkc__registerContainer">
                 <form onSubmit={handleSubmit(mutateAsync)} autoComplete={'off'}>
                     <div className="gkc__registerLogo">

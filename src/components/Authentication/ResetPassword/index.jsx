@@ -10,6 +10,7 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 function ResetPassword(){
     const navigate = useNavigate();
@@ -48,6 +49,9 @@ function ResetPassword(){
 
     return (
         <>
+            <Helmet>
+                <title>Cordum|Reset Password</title>
+            </Helmet>
             <div className="gkc__resetPasswordContainer">
                 <form onSubmit={handleSubmit(mutateAsync)}  autoComplete={'off'}>
                     <div className="gkc__resetPasswordLogo">

@@ -10,6 +10,7 @@ import LabelModal from "../LabelModal";
 import {useDeleteNotesMutation, useGetNotesQuery} from "../../../hooks";
 import Note from "../Note/Note";
 import Footer from "../Footer";
+import {Helmet} from "react-helmet";
 
 function OverviewBody() {
     const [open, setOpen] = useState(false);
@@ -86,6 +87,9 @@ function OverviewBody() {
     } , []);
     return(
         <>
+            <Helmet>
+                <title>Cordum|Home</title>
+            </Helmet>
             <div className={`gkc__overViewBodyContainer`}>
                 <div className="flex">
                     <div className="gkc__overViewBodyNotes">

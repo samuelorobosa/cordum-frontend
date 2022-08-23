@@ -2,7 +2,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import
 {faBarsStaggered,
     faArrowRightFromBracket,
-    faCampground,
     faPlus,
     faSpinner,
     faTrashCan} from "@fortawesome/free-solid-svg-icons";

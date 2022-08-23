@@ -11,6 +11,7 @@ import {useMutation} from "@tanstack/react-query";
 import axios from "axios";
 import {toast} from "react-toastify";
 import AuthenticationContext from "../../../context/Authentication/AuthenticationContext";
+import {Helmet} from "react-helmet";
 
 function Login(){
     const {dispatch} = useContext(AuthenticationContext);
@@ -56,6 +57,9 @@ function Login(){
 
     return (
         <>
+            <Helmet>
+                <title>Cordum|Login</title>
+            </Helmet>
             <div className="gkc__loginContainer">
                 <form onSubmit={handleSubmit(mutateAsync)}  autoComplete={'off'}>
                     <div className="gkc__loginLogo">

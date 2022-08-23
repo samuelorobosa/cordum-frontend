@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import {useMutation} from "@tanstack/react-query";
 import axios from "axios";
 import {toast} from "react-toastify";
+import {Helmet} from "react-helmet";
 
 function ForgotPassword(){
     const toastOptions = {
@@ -38,6 +39,9 @@ function ForgotPassword(){
 
     return (
         <>
+            <Helmet>
+                <title>Cordum|Forgot Password</title>
+            </Helmet>
             <div className="gkc__forgotPasswordContainer">
                 <form onSubmit={handleSubmit(mutateAsync)}  autoComplete={'off'}>
                     <div className="gkc__forgotPasswordLogo">
