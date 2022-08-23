@@ -9,6 +9,7 @@ import Modal from "../Modal";
 import LabelModal from "../LabelModal";
 import {useDeleteNotesMutation, useGetNotesQuery} from "../../../hooks";
 import Note from "../Note/Note";
+import Footer from "../Footer";
 
 function OverviewBody() {
     const [open, setOpen] = useState(false);
@@ -157,6 +158,8 @@ function OverviewBody() {
                     </div>
                 </div>
             </div>
+
+            <Footer/>
         </>
     )
 }

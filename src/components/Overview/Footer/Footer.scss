@@ -1,0 +1,17 @@
+#footer{
+  background: #ffffff;
+
+  div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    max-width: 600px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #64748B;
+  }
+}
