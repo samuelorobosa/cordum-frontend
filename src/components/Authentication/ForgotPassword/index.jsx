@@ -27,7 +27,7 @@ function ForgotPassword(){
             },
         });
     },{
-        onError: ({response})=>toast.error(response?.data?.message,toastOptions),
+        onError: ({response})=>toast.error('Request Unsuccessful, try again later',toastOptions),
         onSuccess: ({data})=>{
             toast.success(data.status,toastOptions);
         },
