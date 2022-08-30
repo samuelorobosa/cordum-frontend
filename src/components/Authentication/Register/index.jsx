@@ -2,7 +2,7 @@ import {useForm} from "react-hook-form";
 import './Register.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faAt, faEye, faEyeSlash, faSpinner, faUserCheck} from '@fortawesome/free-solid-svg-icons'
-import logo from '../../../logo.svg';
+import logo from '../../../assets/images/logo.png';
 import {useContext, useState} from "react";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from "yup";

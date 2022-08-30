@@ -2,7 +2,7 @@ import {useForm} from "react-hook-form";
 import './ResetPassword.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAt, faEye, faEyeSlash, faSpinner} from '@fortawesome/free-solid-svg-icons'
-import logo from '../../../logo.svg';
+import logo from '../../../assets/images/logo.png';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
 import {useMutation} from "@tanstack/react-query";
