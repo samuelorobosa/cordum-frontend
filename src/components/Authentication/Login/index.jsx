@@ -44,7 +44,7 @@ function Login(){
                 payload: data
             })
 
-            window.setTimeout(navigate('/', {replace:true}), 3000);
+            window.setTimeout(navigate('/overview', {replace:true}), 3000);
         },
     });
     let strongRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");

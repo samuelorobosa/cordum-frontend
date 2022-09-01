@@ -47,7 +47,7 @@ function Register(){
                 payload: data
             })
 
-            navigate('/', {replace:true});
+            navigate('/overview', {replace:true});
         },
     });
 
