@@ -87,7 +87,7 @@ function OverviewBody() {
     return(
         <>
             <Helmet>
-                <title>Cordum|Notes</title>
+                <title>Cordum|Overview</title>
             </Helmet>
             <div className={`gkc__overViewBodyContainer`}>
                 <div className="flex">
