@@ -22,10 +22,6 @@
       border-radius: 15px;
       max-width: 90%;
     }
-
-    &:nth-child(2){
-      text-align: end;
-    }
   }
 }
 
@@ -41,12 +37,7 @@
     }
 
     &__ImageContainer{
-      text-align: center;
       order: 2;
-
-      &:nth-child(2){
-        text-align: center;
-      }
     }
   }
 }
