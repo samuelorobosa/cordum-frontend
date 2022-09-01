@@ -7,6 +7,7 @@ import Overview from "../components/Overview";
 import AuthenticationContext from "../context/Authentication/AuthenticationContext";
 import ForgotPassword from "../components/Authentication/ForgotPassword";
 import ResetPassword from "../components/Authentication/ResetPassword";
+import Home from "../pages/home";
 
 function AppRouter(){
     const {dispatch} = useContext(AuthenticationContext);
@@ -31,9 +32,10 @@ function AppRouter(){
                 <Route path="/register" element={<Register/>} />
                 <Route path="/forgot-password" element={<ForgotPassword/>} />
                 <Route path="/reset-password" element={<ResetPassword/>} />
-                <Route path="/" element={<PrivateRoute/>} >
-                    <Route path="/" element={<Overview/>} />
+                <Route path="/overview" element={<PrivateRoute/>} >
+                    <Route path="/overview" element={<Overview/>} />
                 </Route>
+                <Route path='/' element={<Home/>}/>
             </Routes>
         </>
     )
