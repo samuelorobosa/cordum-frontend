@@ -12,7 +12,7 @@ import {Helmet} from "react-helmet";
 
 function ForgotPassword(){
     const toastOptions = {
-        hideProgressBar: true,
+        hideProgressBar: false,
         autoClose: 1500,
         pauseOnHover: false,
     };
